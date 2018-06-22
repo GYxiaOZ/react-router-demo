@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Redirect } from 'react-router-dom';
 
 import UserList from './user/userList';
 import UserEdit from './user/userEdit';
@@ -20,6 +20,9 @@ export default class User extends Component {
           </ul>
         </div>
         <div className="col-sm-10">
+          {this.props.location.pathname === '/user' && (
+            <Redirect to="/user/list" />
+          )}
           <Route path="/user/list" component={UserList} />
           <Route path="/user/edit" component={UserEdit} />
           <Route path="/user/view/:id" component={UserView} />

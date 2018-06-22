@@ -7,6 +7,8 @@ import Home from './components/home';
 import User from './components/user';
 import Profile from './components/profile';
 import Login from './components/login';
+import MenuLink from './components/menuLink';
+import NotFound from './components/notFound';
 
 export default class App extends Component {
   render() {
@@ -22,15 +24,9 @@ export default class App extends Component {
               </div>
               <div className="collapse navbar-collapse">
                 <ul className="nav navbar-nav">
-                  <li>
-                    <Link to="/home">Home</Link>
-                  </li>
-                  <li>
-                    <Link to="/user">User</Link>
-                  </li>
-                  <li>
-                    <Link to="/profile">Profile</Link>
-                  </li>
+                  <MenuLink label="首页" to="/home" />
+                  <MenuLink label="用户列表" to="/user" />
+                  <MenuLink label="个人设置" to="/profile" />
                 </ul>
               </div>
             </div>
@@ -44,6 +40,7 @@ export default class App extends Component {
                   <Route path="/user" component={User} />
                   <Route path="/login" component={Login} />
                   <ProtectedRoute path="/profile" component={Profile} />
+                  <Route component={NotFound} />
                 </Switch>
               </div>
             </div>
