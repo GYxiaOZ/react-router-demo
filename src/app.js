@@ -9,6 +9,7 @@ import Profile from './components/profile';
 import Login from './components/login';
 import MenuLink from './components/menuLink';
 import NotFound from './components/notFound';
+import Learn from './components/learn/learn';
 
 export default class App extends Component {
   render() {
@@ -27,6 +28,7 @@ export default class App extends Component {
                   <MenuLink label="首页" to="/home" />
                   <MenuLink label="用户列表" to="/user" />
                   <MenuLink label="个人设置" to="/profile" />
+                  <MenuLink label="learn" to="/learn" />
                 </ul>
               </div>
             </div>
@@ -40,6 +42,7 @@ export default class App extends Component {
                   <Route path="/user" component={User} />
                   <Route path="/login" component={Login} />
                   <ProtectedRoute path="/profile" component={Profile} />
+                  <Route path="/learn" component={Learn} />
                   <Route component={NotFound} />
                 </Switch>
               </div>
