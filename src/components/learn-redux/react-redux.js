@@ -9,12 +9,12 @@ class ReactRedux extends Component {
   constructor() {
     super();
     this.state = {
-      number: store.getState().number
+      number: store.getState().counter.number
     };
   }
   componentDidMount() {
     this.unsubscribe = store.subscribe(() => {
-      this.setState({ number: store.getState().number });
+      this.setState({ number: store.getState().counter.number });
     });
   }
   componentWillUnmount = () => {

@@ -26,4 +26,13 @@ const createStore = reducer => {
   };
 };
 
-export { createStore };
+const combineReducers = reducers => (state = {}, action) => {
+  let newState = {};
+
+  for (let key in reducers) {
+    newState[key] = reducers[key](state[key], action);
+  }
+  return newState;
+};
+
+export { createStore, combineReducers };

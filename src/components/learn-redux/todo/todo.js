@@ -10,7 +10,7 @@ class Todo extends Component {
   constructor() {
     super();
     this.state = {
-      lists: store.getState().lists
+      lists: store.getState().todo.lists
     };
   }
   handleKeyUp = event => {
@@ -24,7 +24,7 @@ class Todo extends Component {
   };
   componentDidMount() {
     this.unsubscribe = store.subscribe(() => {
-      this.setState({ lists: store.getState().lists });
+      this.setState({ lists: store.getState().todo.lists });
     });
   }
   componentWillUnmount() {

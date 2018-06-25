@@ -4,6 +4,8 @@ import { Route, Link } from 'react-router-dom';
 import JqueryRedux from './jquery-redux';
 import ReactRedux from './react-redux';
 import Todo from './todo/todo';
+import Context from './context';
+import Counter from './counter';
 
 let LearnLink = props => (
   <li>
@@ -21,6 +23,8 @@ class Learn extends Component {
             <LearnLink to="react" />
             <LearnLink to="todo" />
             <LearnLink to="combineReducer" />
+            <LearnLink to="context" />
+            <LearnLink to="counter" />
           </ul>
         </div>
         <div className="col-sm-9">
@@ -36,6 +40,8 @@ class Learn extends Component {
               </div>
             )}
           />
+          <Route path="/learn/context" component={Context} />
+          <Route path="/learn/counter" component={Counter} />
         </div>
       </div>
     );
