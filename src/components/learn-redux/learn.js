@@ -20,12 +20,22 @@ class Learn extends Component {
             <LearnLink to="jquery" />
             <LearnLink to="react" />
             <LearnLink to="todo" />
+            <LearnLink to="combineReducer" />
           </ul>
         </div>
         <div className="col-sm-9">
           <Route path="/learn/jquery" component={JqueryRedux} />
           <Route path="/learn/react" component={ReactRedux} />
           <Route path="/learn/todo" component={Todo} />
+          <Route
+            path="/learn/combineReducer"
+            component={() => (
+              <div>
+                <ReactRedux />
+                <Todo />
+              </div>
+            )}
+          />
         </div>
       </div>
     );

@@ -1,21 +1,6 @@
 import React, { Component } from 'react';
-import { createStore } from '../../redux';
-
-const ADD = 'ADD';
-const MINUS = 'MINUS';
-
-let reducer = (state = { number: 0 }, action) => {
-  switch (action.type) {
-    case ADD:
-      return { number: state.number + action.amount };
-    case MINUS:
-      return { number: state.number - action.amount };
-    default:
-      return state;
-  }
-};
-
-let store = createStore(reducer);
+import { ADD, MINUS } from './action-types';
+import { store } from './store';
 
 let add = amount => ({ type: ADD, amount });
 let minus = amount => ({ type: MINUS, amount });

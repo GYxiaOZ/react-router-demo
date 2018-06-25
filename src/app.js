@@ -9,7 +9,7 @@ import Profile from './components/profile';
 import Login from './components/login';
 import MenuLink from './components/menuLink';
 import NotFound from './components/notFound';
-import Learn from './components/learn/learn';
+import Learn from './components/learn-redux/learn';
 
 export default class App extends Component {
   render() {
