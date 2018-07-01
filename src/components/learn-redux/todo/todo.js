@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 
 import { ADD_TODO, DELETE_TODO } from '../action-types';
@@ -23,7 +24,7 @@ class Todo extends Component {
   };
   componentDidMount() {
     this.unsubscribe = store.subscribe(() => {
-      this.setState({ lists: store.getState().todo });
+      this.setState(store.getState().todo);
     });
   }
   componentWillUnmount() {
