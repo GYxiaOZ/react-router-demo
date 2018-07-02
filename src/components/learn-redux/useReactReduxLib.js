@@ -1,6 +1,13 @@
-import React from 'react';
-import { connect } from '../../mini-redux/connect';
+import React, { Component } from 'react';
+import { createStore } from 'redux';
+import counter from './reducers/counter';
+import { Provider, connect } from 'react-redux';
+
+// import Counter from './counter';
+
 import { ADD, MINUS } from './action-types';
+
+let store = createStore(counter);
 
 let add = amount => ({ type: ADD, amount });
 let minus = amount => ({ type: MINUS, amount });
@@ -25,7 +32,19 @@ let mapDispatchToProps = dispatch => ({
   onMinus: () => dispatch(minus(1))
 });
 
-export default connect(
+let Child = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Counter);
+
+class UseReactReduxLib extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Child />
+      </Provider>
+    );
+  }
+}
+
+export default UseReactReduxLib;

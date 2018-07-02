@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { createStore } from '../../redux';
+import { createStore } from '../../mini-redux/redux';
 
 const ADD = 'ADD';
 const MINUS = 'MINUS';

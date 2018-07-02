@@ -17,9 +17,9 @@ class ReactRedux extends Component {
       this.setState({ number: store.getState().counter.number });
     });
   }
-  componentWillUnmount = () => {
+  componentWillUnmount() {
     this.unsubscribe();
-  };
+  }
   handleClick = action => {
     store.dispatch(action);
   };

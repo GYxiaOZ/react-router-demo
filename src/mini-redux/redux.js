@@ -26,6 +26,16 @@ const createStore = reducer => {
   };
 };
 
+const applyMiddleware = middleware => createStore => reducer => {
+  let store = createStore(reducer);
+  middleware = middleware(store);
+  let dispatch = middleware(store.dispatch);
+  return {
+    ...store,
+    dispatch
+  };
+};
+
 const combineReducers = reducers => (state = {}, action) => {
   let newState = {};
 
@@ -35,4 +45,4 @@ const combineReducers = reducers => (state = {}, action) => {
   return newState;
 };
 
-export { createStore, combineReducers };
+export { createStore, combineReducers, applyMiddleware };

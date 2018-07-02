@@ -6,10 +6,17 @@ import ReactRedux from './react-redux';
 import Todo from './todo/todo';
 import Context from './context';
 import Counter from './counter';
+import Provider from '../../mini-redux/provider';
+import UseReactReduxLib from './useReactReduxLib';
+import Middleware from './middleware/middleware';
+
+import { createStore } from '../../mini-redux/redux';
+import counter from './reducers/counter';
+let store = createStore(counter);
 
 let LearnLink = props => (
   <li>
-    <Link to={`/learn/${props.to}`}>{props.to}</Link>
+    <Link to={`/learn/${props.to}`}>{props.title || props.to}</Link>
   </li>
 );
 
@@ -25,6 +32,8 @@ class Learn extends Component {
             <LearnLink to="combineReducer" />
             <LearnLink to="context" />
             <LearnLink to="counter" />
+            <LearnLink to="use-react-redux-lib" title="用react-redux库" />
+            <LearnLink to="middleware" />
           </ul>
         </div>
         <div className="col-sm-9">
@@ -41,7 +50,19 @@ class Learn extends Component {
             )}
           />
           <Route path="/learn/context" component={Context} />
-          <Route path="/learn/counter" component={Counter} />
+          <Route
+            path="/learn/counter"
+            component={() => (
+              <Provider store={store}>
+                <Counter />
+              </Provider>
+            )}
+          />
+          <Route
+            path="/learn/use-react-redux-lib"
+            component={UseReactReduxLib}
+          />
+          <Route path="/learn/middleware" component={Middleware} />
         </div>
       </div>
     );
