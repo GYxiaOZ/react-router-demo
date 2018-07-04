@@ -26,10 +26,15 @@ const createStore = reducer => {
   };
 };
 
-const applyMiddleware = middleware => createStore => reducer => {
+const compose = (...fns) => (...args) => {
+  let last = fns.pop();
+  return fns.reduceRight((composed, fn) => fn(composed), last(...args));
+};
+
+const applyMiddleware = (...middlewares) => createStore => reducer => {
   let store = createStore(reducer);
-  middleware = middleware(store);
-  let dispatch = middleware(store.dispatch);
+  middlewares = middlewares.map(middleware => middleware(store));
+  let dispatch = compose(...middlewares)(store.dispatch);
   return {
     ...store,
     dispatch

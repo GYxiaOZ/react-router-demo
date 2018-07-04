@@ -32,8 +32,8 @@ class Learn extends Component {
             <LearnLink to="combineReducer" />
             <LearnLink to="context" />
             <LearnLink to="counter" />
-            <LearnLink to="use-react-redux-lib" title="用react-redux库" />
             <LearnLink to="middleware" />
+            <LearnLink to="use-react-redux-lib" title="用react-redux库计数器" />
           </ul>
         </div>
         <div className="col-sm-9">

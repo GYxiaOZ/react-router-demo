@@ -2,15 +2,15 @@ import React from 'react';
 import { createStore, applyMiddleware } from '../../../mini-redux/redux';
 import counter from '../reducers/counter';
 import { ADD, MINUS } from '../action-types';
-import logger from '../../../mini-redux/logger';
+import { logger, logger2 } from '../../../mini-redux/logger';
 // import thunk from '../../../mini-redux/thunk';
-import promise from '../../../mini-redux/promise';
+// import promise from '../../../mini-redux/promise';
 
 let add = amount => ({ type: ADD, amount });
 let minus = amount => ({ type: MINUS, amount });
 
 // const store = createStore(counter);
-const store = applyMiddleware(promise)(createStore)(counter);
+const store = applyMiddleware(logger, logger2)(createStore)(counter);
 const dispatch = store.dispatch;
 
 class Counter extends React.Component {
